@@ -1,152 +1,244 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ORINIG ONE</title>
-    <link rel="stylesheet" href="./css/bootstrap.css">
+    <title>個人網站 | 首頁</title>
+    <style>
+        /* --- 全域設定與變數 --- */
+        :root {
+            --primary-color: #5B6B61; /* 柔和的墨綠色 */
+            --bg-color: #F8F6F0; /* 和紙般的米白色 */
+            --text-color: #333333;
+            --accent-color: #C07953; /* 磚紅色點綴 */
+            --border-color: #D3CDC1;
+            --font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif; /* 偏好襯線體營造和風 */
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            letter-spacing: 1px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- 導覽列 (全站通用) --- */
+        header {
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            writing-mode: vertical-lr; /* 日式直排巧思 */
+            letter-spacing: 5px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* 當前頁面標示 */
+        nav a.active {
+            color: var(--accent-color);
+        }
+        nav a.active::after {
+            width: 100%;
+        }
+
+        /* --- 主要內容區塊 --- */
+        main {
+            flex: 1;
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* --- 首頁特定樣式 --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: normal;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .hero-text h2 {
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+
+        .hero-text p {
+            font-size: 1rem;
+            max-width: 500px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 30px;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        /* 使用 CSS 繪製一個日式風格的裝飾框 */
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--accent-color);
+            z-index: -1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 3/4; /* 日式常見比例 */
+            background-color: #e0e0e0; /* 圖片載入前的底色 */
+        }
+
+        /* --- 頁尾 (全站通用) --- */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+            color: #888;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* --- 響應式設計 --- */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .logo {
+                writing-mode: horizontal-tb; /* 手機版改回橫排 */
+                letter-spacing: 2px;
+            }
+            .hero {
+                flex-direction: column-reverse;
+            }
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">ORINIG ONE</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://drive.google.com/drive/folders/1BfUeSyqnslg9K6tZ66cIHLq7eFD7QerJ">品牌行銷</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"
-                            href="https://drive.google.com/drive/folders/1aJJrPj3QXqgZzm9LoZE1xqRANPhd8vYS">短影音</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            聯絡我們
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="https://origin-one.blogspot.com/">Blog</a></li>
-                            <li><a class="dropdown-item" href="https://www.instagram.com/ho_wenkai/">instagram</a></li>
-                            <li><a class="dropdown-item" href="https://www.youtube.com/@Kai-2b">YouTube</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="./images/photo1.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="./images/photo2.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="./images/photo3.jpg" class="d-block w-100" alt="...">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-    <div class="alert mt-3 mx-3 alert-primary" role="alert">
-        <a href="https://www.youtube.com/@Kai-2b">YouTubeu影片</a>
-    </div>
-    <div class="alert mt-3 mx-3 alert-secondary" role="alert">
-        <a href="https://www.facebook.com/profile.php?id=61592906382397&locale=zh_TW">Facebook粉絲專頁</a>
-    </div>
-    <div class="alert mt-3 mx-3 alert-success" role="alert">
-        <a href="https://origin-one.blogspot.com/">Blog</a>
-    </div>
-    </div>
 
-    <div class="mx-3">
-        <div class="row">
+    <!-- 共用導覽列 -->
+    <header>
+        <a href="index.html" class="logo">作品集</a>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">首頁</a></li>
+                <li><a href="about.html">關於</a></li>
+                <li><a href="portfolio.html">作品</a></li>
+            </ul>
+        </nav>
+    </header>
 
-            <div class="col-md-3 col-sm-6 mb-3">
-                <div class="card">
-                    <img src="./images/g01.jpg" class=" card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">廣告人像</h5>
-                        <p class="card-text"></p>
-                        <a href="https://drive.google.com/drive/folders/1WrtcdNDliMOcZNCJBDQrDgAtgQVghhNH"
-                            class="btn btn-primary w-100">請點擊前往連結</a>
-                    </div>
-                </div>
+    <!-- 頁面主要內容 -->
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>設計、<br>與生活的交織。</h1>
+                <h2>視覺設計師 / 攝影愛好者</h2>
+                <p>你好，我是一名熱愛簡約美學的創作者。致力於在細節中尋找平衡，將日常的靈感轉化為靜謐而有力量的視覺作品。歡迎來到我的個人空間。</p>
+                <a href="./images/45.jpg" class="btn">瀏覽作品</a>
             </div>
-            <div class="col-md-3 col-sm-6 mb-3">
-                <div class="card">
-                    <img src="./images/s02.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">靜物</h5>
-                        <p class="card-text"></p>
-                        <a href="https://drive.google.com/drive/folders/1wssw-wJAg8UI3KxqD3_6UeT2vYjVzh3p"
-                            class="btn btn-primary w-100">請點擊前往連結</a>
-                    </div>
-                </div>
+            <div class="hero-image">
+                <!-- 使用 placehold.co 作為範例圖片，實際使用時請替換為您自己的圖片 -->
+                <img src="./images/ChatGPT Image 2026年8月7日 11_39_02 (1).png" alt="個人風格代表圖">
             </div>
-            <div class="col-md-3 col-sm-6 mb-3">
-                <div class="card">
-                    <img src="./images/f03.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">美食</h5>
-                        <p class="card-text"></p>
-                        <a href="https://drive.google.com/drive/folders/1D-8kUITuLNx5aq-0LIQ0CZ3Qv0Stc6Cu"
-                            class="btn btn-primary w-100">請點擊前往連結</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 mb-3">
-                <div class="card">
-                    <img src="./images/e04.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">企業形象</h5>
-                        <p class="card-text"></p>
-                        <a href="https://drive.google.com/drive/folders/1ghZTxn8mBCRUdYoEBp-vcM3S-uo21Pp4"
-                            class="btn btn-primary w-100">請點擊前往連結</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </section>
+    </main>
 
-
-    </div>
+    <!-- 共用頁尾 -->
     <footer>
-
-        <hr>
-        <p class="float-start">
-            &copy;2026.09 ORIGIN ONE
-            <a href="隱私權"></a>
-            <a href="聯絡我們"></a>
-
-        </p>
-        <p class="float-end">
-            <a href="#">Back to Top</a>
-        </p>
+        <p>&copy; 2026 Your Name. All rights reserved.</p>
     </footer>
 
-
-    <script src="./js/bootstrap.js"></script>
-
-
 </body>
-
 </html>

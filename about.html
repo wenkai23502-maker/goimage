@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人網站 | 關於我</title>
+    <style>
+        /* --- 全域設定與變數 (與 index.html 相同) --- */
+        :root {
+            --primary-color: #5B6B61;
+            --bg-color: #F8F6F0;
+            --text-color: #333333;
+            --accent-color: #C07953;
+            --border-color: #D3CDC1;
+            --font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            letter-spacing: 1px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- 導覽列 (與 index.html 相同) --- */
+        header { padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary-color); text-decoration: none; writing-mode: vertical-lr; letter-spacing: 5px; }
+        nav ul { list-style: none; display: flex; gap: 3rem; }
+        nav a { text-decoration: none; color: var(--text-color); font-size: 0.9rem; position: relative; padding-bottom: 5px; transition: color 0.3s; }
+        nav a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: 0; left: 0; background-color: var(--accent-color); transition: width 0.3s ease; }
+        nav a:hover { color: var(--accent-color); }
+        nav a:hover::after { width: 100%; }
+        nav a.active { color: var(--accent-color); }
+        nav a.active::after { width: 100%; }
+        
+        main { flex: 1; padding: 4rem 5%; max-width: 1000px; margin: 0 auto; width: 100%; }
+        footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; border-top: 1px solid var(--border-color); }
+
+        /* --- 關於我特定樣式 --- */
+        .page-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-weight: normal;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 1px;
+            background-color: var(--accent-color);
+        }
+
+        .about-content {
+            display: flex;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+
+        .about-image {
+            flex: 0 0 40%;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 2px;
+            box-shadow: 5px 5px 0px 0px var(--border-color);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-weight: normal;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .skills-list {
+            margin-top: 2rem;
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .skills-list li {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .skills-list li::before {
+            content: '・'; /* 日式常見列表符號 */
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        /* --- 響應式設計 --- */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 1.5rem; }
+            .logo { writing-mode: horizontal-tb; letter-spacing: 2px; }
+            .about-content { flex-direction: column; }
+            .about-image { flex: 0 0 100%; width: 100%; margin-bottom: 2rem; }
+            .skills-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 共用導覽列 -->
+    <header>
+        <a href="index.html" class="logo">作品集</a>
+        <nav>
+            <ul>
+                <li><a href="index.html">首頁</a></li>
+                <li><a href="about.html" class="active">關於</a></li>
+                <li><a href="portfolio.html">作品</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2 class="page-title">關於我</h2>
+        
+        <div class="about-content">
+            <div class="about-image">
+                 <img src="./images/ChatGPT Image 2026年8月7日 11_39_03 (2).png" alt="個人照片">
+            </div>
+            
+            <div class="about-text">
+                <h3>追求本質的設計哲學</h3>
+                <p>我深信好的設計不應是繁複的堆砌，而是去除多餘後留下的純粹。在每一次的創作中，我致力於尋找功能與美學之間的完美平衡。</p>
+                <p>擁有超過五年的視覺設計經驗，涉獵領域包含品牌識別、網頁設計以及平面排版。我喜歡從日常的微小細節中汲取靈感，並將其融入作品之中，賦予設計生命力與溫度。</p>
+                
+                <h3 style="margin-top: 2rem;">專業技能</h3>
+                <ul class="skills-list">
+                    <li>UI / UX 設計</li>
+                    <li>品牌識別設計 (CI/VI)</li>
+                    <li>網頁前端開發 (HTML/CSS)</li>
+                    <li>商業攝影</li>
+                    <li>排版與字體設計</li>
+                    <li>影像處理與合成</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- 共用頁尾 -->
+    <footer>
+        <p>&copy; 2026 Your Name. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
