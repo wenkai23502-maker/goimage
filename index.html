@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,16 @@
     <style>
         /* --- 全域設定與變數 --- */
         :root {
-            --primary-color: #5B6B61; /* 柔和的墨綠色 */
-            --bg-color: #F8F6F0; /* 和紙般的米白色 */
+            --primary-color: #5B6B61;
+            /* 柔和的墨綠色 */
+            --bg-color: #F8F6F0;
+            /* 和紙般的米白色 */
             --text-color: #333333;
-            --accent-color: #C07953; /* 磚紅色點綴 */
+            --accent-color: #C07953;
+            /* 磚紅色點綴 */
             --border-color: #D3CDC1;
-            --font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif; /* 偏好襯線體營造和風 */
+            --font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+            /* 偏好襯線體營造和風 */
         }
 
         * {
@@ -46,7 +51,8 @@
             font-weight: bold;
             color: var(--primary-color);
             text-decoration: none;
-            writing-mode: vertical-lr; /* 日式直排巧思 */
+            writing-mode: vertical-lr;
+            /* 日式直排巧思 */
             letter-spacing: 5px;
         }
 
@@ -88,6 +94,7 @@
         nav a.active {
             color: var(--accent-color);
         }
+
         nav a.active::after {
             width: 100%;
         }
@@ -155,7 +162,7 @@
             flex: 1;
             position: relative;
         }
-        
+
         /* 使用 CSS 繪製一個日式風格的裝飾框 */
         .hero-image::before {
             content: '';
@@ -173,8 +180,10 @@
             height: auto;
             display: block;
             object-fit: cover;
-            aspect-ratio: 3/4; /* 日式常見比例 */
-            background-color: #e0e0e0; /* 圖片載入前的底色 */
+            aspect-ratio: 3/4;
+            /* 日式常見比例 */
+            background-color: #e0e0e0;
+            /* 圖片載入前的底色 */
         }
 
         /* --- 頁尾 (全站通用) --- */
@@ -192,19 +201,24 @@
                 flex-direction: column;
                 gap: 1.5rem;
             }
+
             .logo {
-                writing-mode: horizontal-tb; /* 手機版改回橫排 */
+                writing-mode: horizontal-tb;
+                /* 手機版改回橫排 */
                 letter-spacing: 2px;
             }
+
             .hero {
                 flex-direction: column-reverse;
             }
+
             .hero-text h1 {
                 font-size: 2.2rem;
             }
         }
     </style>
 </head>
+
 <body>
 
     <!-- 共用導覽列 -->
@@ -223,22 +237,27 @@
     <main>
         <section class="hero">
             <div class="hero-text">
-                <h1>設計、<br>與生活的交織。</h1>
-                <h2>視覺設計師 / 攝影愛好者</h2>
-                <p>你好，我是一名熱愛簡約美學的創作者。致力於在細節中尋找平衡，將日常的靈感轉化為靜謐而有力量的視覺作品。歡迎來到我的個人空間。</p>
-                <a href="./images/45.jpg" class="btn">瀏覽作品</a>
+                <h1>ORINIG ONE<br>原點策略</h1>
+                <h2>視覺智慧 / 品牌策略</h2>
+                <p>我們相信，每一個成功的品牌，都始於一個清晰的原點。
+                    我們協助中小企業、地方品牌與農產品品牌，透過品牌策略、商業視覺與 AI 商業應用，建立具有市場競爭力的品牌。
+                </p>
+                <a href="./images/ORIGIN ONE.jpg" class="btn">瀏覽作品</a>
+                
+                
             </div>
             <div class="hero-image">
                 <!-- 使用 placehold.co 作為範例圖片，實際使用時請替換為您自己的圖片 -->
-                <img src="./images/ChatGPT Image 2026年8月7日 11_39_02 (1).png" alt="個人風格代表圖">
+                <img src="./images/01.jpg" alt="個人風格代表圖">
             </div>
         </section>
     </main>
 
     <!-- 共用頁尾 -->
     <footer>
-        <p>&copy; 2026 Your Name. All rights reserved.</p>
+        <p>&copy; 2026 Kevin ho. All rights reserved.</p>
     </footer>
 
 </body>
+
 </html>
